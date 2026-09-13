@@ -1,1391 +1,250 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>M. M. Mustakim Billah — Urban Planner &amp; Spatial Data Scientist</title>
-  <meta name="description" content="Urban Planner and Geospatial Data Scientist specializing in Urban Heat Islands, remote sensing, spatial machine learning, and evidence-driven master planning for sustainable cities."/>
-  <meta name="author" content="M. M. Mustakim Billah"/>
-  
-  <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:title" content="M. M. Mustakim Billah — Urban Planner &amp; Spatial Data Scientist"/>
-  <meta property="og:description" content="Leveraging geospatial intelligence, satellite remote sensing, and machine learning to build climate-resilient cities."/>
-  <meta name="theme-color" content="#090d14"/>
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090d14'/%3E%3Cpath d='M16 46V18h6l10 17 10-17h6v28h-6V28l-8 14h-4l-8-14v18z' fill='%23d4af37'/%3E%3C/svg%3E"/>
-
-  <!-- Typography: Cormorant Garamond & Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" referrerpolicy="no-referrer"/>
-
-  <!-- Structured Data / JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "M. M. Mustakim Billah",
-    "jobTitle": "Urban Planner & Spatial Data Scientist",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Sheltech Consultants (Pvt.) Ltd."
-    },
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Chittagong University of Engineering and Technology (CUET)"
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Dhaka",
-      "addressCountry": "Bangladesh"
-    },
-    "email": "mailto:mustakim.billah.m98@gmail.com",
-    "sameAs": [
-      "https://www.linkedin.com/in/mmustakimbillah/",
-      "https://www.researchgate.net/profile/Mustakim-Billah-6",
-      "https://github.com/mustakimbillah98"
-    ]
-  }
-  </script>
-
-  <style>
-    /* ===== LUXURY EXECUTIVE TOKENS ===== */
-    :root {
-      --bg-dark: #090d14;
-      --bg-card: #111722;
-      --bg-card-hover: #161f2e;
-      --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-gold: rgba(212, 175, 55, 0.35);
-      
-      --gold-primary: #d4af37;
-      --gold-light: #f3e5ab;
-      --gold-hover: #e5c158;
-      
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      
-      --accent-teal: #14b8a6;
-      --accent-cyan: #06b6d4;
-
-      --font-serif: "Cormorant Garamond", Georgia, serif;
-      --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-      --container: 1180px;
-      --nav-height: 72px;
-      --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      font-family: var(--font-sans);
-      font-size: 16px;
-      scroll-behavior: smooth;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background: var(--bg-dark);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-
-    /* Custom Selection & Scrollbar */
-    ::selection { background: rgba(212, 175, 55, 0.3); color: #fff; }
-    ::-webkit-scrollbar { width: 7px; }
-    ::-webkit-scrollbar-track { background: var(--bg-dark); }
-    ::-webkit-scrollbar-thumb { background: #222d3d; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--gold-primary); }
-
-    /* ===== NAVIGATION ===== */
-    .header {
-      position: fixed;
-      inset: 0 0 auto 0;
-      height: var(--nav-height);
-      z-index: 1000;
-      background: rgba(9, 13, 20, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-subtle);
-      display: flex;
-      align-items: center;
-    }
-
-    .header-container {
-      width: 100%;
-      max-width: var(--container);
-      margin: auto;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-
-    .brand-monogram {
-      width: 38px;
-      height: 38px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--gold-primary), #8f721d);
-      color: var(--bg-dark);
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-    }
-
-    .brand-meta .brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: #fff;
-      display: block;
-      line-height: 1.1;
-    }
-
-    .brand-meta .brand-subtitle {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-primary);
-      display: block;
-      margin-top: 0.2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--text-muted);
-      padding: 0.55rem 0.9rem;
-      border-radius: 6px;
-      transition: var(--transition);
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .btn-nav {
-      margin-left: 0.8rem;
-      font-size: 0.76rem !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--bg-dark) !important;
-      background: var(--gold-primary);
-      padding: 0.55rem 1.1rem !important;
-      border-radius: 6px;
-      transition: var(--transition);
-    }
-
-    .btn-nav:hover {
-      background: var(--gold-hover) !important;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero {
-      position: relative;
-      padding: calc(var(--nav-height) + 5rem) 2rem 5rem;
-      background: radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 10% 80%, rgba(212, 175, 55, 0.07) 0%, transparent 45%),
-                  var(--bg-dark);
-      overflow: hidden;
-    }
-
-    /* Subtle Cartographic Coordinate Grid Overlay */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-      pointer-events: none;
-    }
-
-    .hero-container {
-      position: relative;
-      max-width: var(--container);
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.3fr 0.85fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    /* Status Pill */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.4rem 0.95rem;
-      border-radius: 50px;
-      background: rgba(20, 184, 166, 0.08);
-      border: 1px solid rgba(20, 184, 166, 0.25);
-      color: #5eead4;
-      margin-bottom: 1.5rem;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #14b8a6;
-      box-shadow: 0 0 8px #14b8a6;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 5.8vw, 4.8rem);
-      line-height: 1.02;
-      font-weight: 700;
-      letter-spacing: -0.015em;
-      color: #fff;
-      margin-bottom: 1.1rem;
-    }
-
-    .hero-title span {
-      display: block;
-      color: var(--gold-primary);
-      font-style: italic;
-      font-weight: 600;
-    }
-
-    .hero-tagline {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 1.4rem;
-    }
-
-    .hero-tagline i.sep {
-      display: inline-block;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gold-primary);
-    }
-
-    .hero-description {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      max-width: 58ch;
-      margin-bottom: 2.2rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.85rem 1.65rem;
-      border-radius: 6px;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .btn-gold {
-      background: var(--gold-primary);
-      color: var(--bg-dark);
-      border: 1px solid var(--gold-primary);
-    }
-
-    .btn-gold:hover {
-      background: var(--gold-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.28);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border-subtle);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-primary);
-      background: rgba(212, 175, 55, 0.04);
-      transform: translateY(-2px);
-    }
-
-    .social-row {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .social-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.02);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      transition: var(--transition);
-    }
-
-    .social-btn:hover {
-      border-color: var(--gold-primary);
-      color: var(--gold-primary);
-      background: rgba(212, 175, 55, 0.08);
-      transform: translateY(-2px);
-    }
-
-    /* Profile Frame */
-    .profile-wrap {
-      position: relative;
-      max-width: 330px;
-      margin-left: auto;
-    }
-
-    .profile-card {
-      position: relative;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 0.65rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .profile-img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    /* Executive Frame Accents */
-    .profile-wrap::before {
-      content: "";
-      position: absolute;
-      inset: -8px -8px auto auto;
-      width: 90px;
-      height: 90px;
-      border-top: 2px solid var(--gold-primary);
-      border-right: 2px solid var(--gold-primary);
-      border-radius: 0 12px 0 0;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-
-    .profile-wrap::after {
-      content: "";
-      position: absolute;
-      inset: auto auto -8px -8px;
-      width: 90px;
-      height: 90px;
-      border-bottom: 2px solid var(--accent-teal);
-      border-left: 2px solid var(--accent-teal);
-      border-radius: 0 0 0 12px;
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    /* ===== QUANTIFIABLE IMPACT METRICS ===== */
-    .metrics {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      position: relative;
-    }
-
-    .metrics-container {
-      max-width: var(--container);
-      margin: auto;
-      padding: 2.4rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
-    .metric-item {
-      text-align: center;
-      padding: 0 1.2rem;
-      border-right: 1px solid var(--border-subtle);
-    }
-
-    .metric-item:last-child {
-      border-right: none;
-    }
-
-    .metric-num {
-      display: block;
-      font-family: var(--font-serif);
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: var(--gold-primary);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .metric-label {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .metric-sub {
-      display: block;
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      margin-top: 0.2rem;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .profile-wrap {
-        margin: auto;
-      }
-      .metrics-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-      .metric-item:nth-child(2) {
-        border-right: none;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .metrics-container {
-        grid-template-columns: 1fr;
-      }
-      .metric-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border-subtle);
-        padding-bottom: 1.5rem;
-      }
-      .metric-item:last-child {
-        border-bottom: none;
-        padding-bottom: 0;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- NAVIGATION -->
-  <header class="header">
-    <div class="header-container">
-      <a href="#" class="brand">
-        <div class="brand-monogram">MB</div>
-        <div class="brand-meta">
-          <span class="brand-title">M. M. Mustakim Billah</span>
-          <span class="brand-subtitle">Urban Planner &amp; Spatial Scientist</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#about">Profile</a>
-        <a href="#projects">Master Plans</a>
-        <a href="#research">Publications</a>
-        <a href="#tools">Analytics &amp; GIS</a>
-        <a href="#contact" class="btn-nav">Initiate Consultation</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        
-        <!-- Live Status Pill -->
-        <div class="status-badge">
-          <span class="status-dot"></span>
-          <span>Available for Consultancies &amp; Joint Research</span>
-        </div>
-
-        <h1 class="hero-title">
-          Spatial Intelligence &amp;
-          <span>Climate-Resilient Cities.</span>
-        </h1>
-
-        <div class="hero-tagline">
-          <span>Master Planning</span>
-          <i class="sep"></i>
-          <span>Satellite Remote Sensing</span>
-          <i class="sep"></i>
-          <span>Spatial Machine Learning</span>
-        </div>
-
-        <p class="hero-description">
-          Urban planner and geospatial researcher at <strong>Sheltech Consultants</strong> and alumnus of <strong>CUET</strong>. Specializing in Land Surface Temperature (LST) modeling, Sentinel/Landsat processing, and high-precision spatial master plans across South Asian metropolitan corridors.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-gold">
-            <i class="fa-solid fa-layer-group"></i>
-            Review Master Plans
-          </a>
-          <a href="#contact" class="btn btn-outline">
-            <i class="fa-solid fa-file-lines"></i>
-            Request Dossier / CV
-          </a>
-        </div>
-
-        <div class="social-row">
-          <a href="https://www.linkedin.com/in/mmustakimbillah/" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-          <a href="https://www.researchgate.net/profile/Mustakim-Billah-6" target="_blank" rel="noopener" class="social-btn" title="ResearchGate">
-            <i class="fa-brands fa-researchgate"></i>
-          </a>
-          <a href="https://github.com/mustakimbillah98" target="_blank" rel="noopener" class="social-btn" title="GitHub Repository">
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a href="mailto:mustakim.billah.m98@gmail.com" class="social-btn" title="Email Direct">
-            <i class="fa-solid fa-envelope"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Profile Card -->
-      <div class="profile-wrap">
-        <div class="profile-card">
-          <!-- Replace profile.jpg with your portrait -->
-          <img src="profile.jpg" alt="M. M. Mustakim Billah" class="profile-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&h=750&q=80'"/>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUANTIFIABLE METRICS -->
-  <section class="metrics">
-    <div class="metrics-container">
-      <div class="metric-item">
-        <span class="metric-num">3+</span>
-        <span class="metric-label">Years Experience</span>
-        <span class="metric-sub">Urban Master Planning &amp; GIS</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-num">10+</span>
-        <span class="metric-label">Strategic Projects</span>
-        <span class="metric-sub">Upazila &amp; Gov't Master Plans</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-num">4+</span>
-        <span class="metric-label">Research Studies</span>
-        <span class="metric-sub">Urban Heat Island &amp; Air Quality</span>
-      </div>
-      <div class="metric-item">
-        <span class="metric-num">30m</span>
-        <span class="metric-label">Satellite Resolution</span>
-        <span class="metric-sub">Landsat 8 &amp; Sentinel-5P Analytics</span>
-      </div>
-    </div>
-  </section>
-
-</body>
-</html>
-/* ===== SECTION SHELL ===== */
-.sec{padding:5.5rem 1.75rem}
-.wrap{max-width:var(--wrap);margin:auto}
-.shead{margin-bottom:2.8rem;max-width:70ch}
-.shead .eyebrow{color:var(--teal)}
-.shead h2{font-family:var(--serif);font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.12;margin-top:.5rem}
-.shead h2 em{font-style:italic;color:var(--teal)}
-.shead p{font-size:.92rem;color:var(--t3);line-height:1.8;margin-top:.8rem}
-.bg-bone{background:var(--bone)}.bg-ink{background:var(--ink)}
-.bg-ink .shead h2{color:#fff}.bg-ink .shead p{color:var(--d2)}.bg-ink .shead .eyebrow{color:var(--gold)}
-.two{display:grid;grid-template-columns:1.55fr 1fr;gap:3.2rem;align-items:start}
-.prose p{font-size:.95rem;color:var(--t2);line-height:1.9;margin-bottom:1.1rem;max-width:68ch}
-.prose strong{color:var(--t1);font-weight:600}
-.prose .big{font-family:var(--serif);font-size:1.5rem;line-height:1.55;color:#18222f;margin-bottom:1.4rem}
-.chips{display:flex;flex-wrap:wrap;gap:.4rem}
-.chip{font-size:.68rem;font-weight:500;padding:.26rem .68rem;border-radius:3px;background:rgba(13,17,23,.045);color:var(--t2);border:1px solid rgba(13,17,23,.09);transition:all .2s}
-.chip:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
-.c-teal{background:rgba(29,106,114,.07);color:var(--teal);border-color:rgba(29,106,114,.2)}
-.c-gold{background:rgba(201,168,76,.12);color:var(--goldd);border-color:rgba(201,168,76,.3)}
-.c-dark{background:rgba(201,168,76,.1);color:rgba(201,168,76,.9);border-color:rgba(201,168,76,.22)}
-.c-dark:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-
-/* ===== DARK CARD / TIMELINE ===== */
-.dark-card{position:relative;overflow:hidden;background:var(--ink);border-radius:var(--r);padding:1.9rem}
-.dark-card::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;background:var(--thermal)}
-.dark-card h3{font-family:var(--serif);font-size:1.25rem;color:#fff;margin-bottom:1.1rem;display:flex;align-items:center;gap:.6rem}
-.dark-card h3 i{color:var(--gold);font-size:.9rem}
-.dash li{display:flex;gap:.7rem;align-items:flex-start;font-size:.83rem;line-height:1.6;color:var(--d2);padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
-.dash li:last-child{border-bottom:0}
-.dash li::before{content:'';width:9px;height:1px;background:var(--gold);flex-shrink:0;margin-top:.65rem}
-.links{display:flex;flex-direction:column;gap:.55rem;margin-top:1.1rem}
-.lrow{display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;background:var(--bone);border:1px solid var(--rule);border-radius:var(--r);text-decoration:none;transition:all .2s}
-.lrow:hover{border-color:rgba(201,168,76,.55);transform:translateX(3px)}
-.lrow i:first-child{color:var(--teal);width:18px;text-align:center}
-.lrow span{font-size:.83rem;color:var(--t2);font-weight:500}
-.lrow .go{margin-left:auto;color:#c3b492;font-size:.68rem}
-.subh{font-family:var(--serif);font-size:1.4rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
-.subh i{color:var(--gold);font-size:.88rem}
-.tline{border-left:1px solid var(--rule);padding-left:1.5rem}
-.tl{position:relative;padding-bottom:1.7rem}.tl:last-child{padding-bottom:0}
-.tl::before{content:'';position:absolute;left:-1.5rem;top:.4rem;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--gold)}
-.tl b{display:block;font-size:.67rem;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:700}
-.tl strong{display:block;font-size:.96rem;color:var(--t1);margin-top:.25rem}
-.tl span{display:block;font-size:.83rem;color:var(--t3);margin-top:.2rem;line-height:1.65}
-.callout{border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.05);border-radius:var(--r);padding:1.4rem;margin-top:1.8rem}
-.callout b{display:block;font-size:.96rem}.callout span{display:block;font-size:.83rem;color:var(--t3);margin:.25rem 0 .75rem}
-.ticks{display:grid;grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1rem}
-.ticks li{display:flex;gap:.65rem;align-items:flex-start;font-size:.85rem;color:var(--t2);line-height:1.6}
-.ticks li i{color:var(--gold);font-size:.55rem;margin-top:.5rem;flex-shrink:0}
-
-/* ===== PUBLICATIONS ===== */
-.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
-.fbtn{background:none;border:1px solid var(--rule);border-radius:100px;padding:.45rem 1.05rem;font-size:.75rem;color:var(--t3);cursor:pointer;transition:all .2s}
-.fbtn:hover{border-color:var(--teal);color:var(--teal)}
-.fbtn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.pgroup{margin-bottom:3.2rem}.pgroup:last-child{margin-bottom:0}
-.glabel{display:flex;align-items:center;gap:.8rem;margin-bottom:1.3rem;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
-.glabel::after{content:'';flex:1;height:1px;background:var(--rule)}
-.glabel .n{font-size:.65rem;background:rgba(29,106,114,.1);border:1px solid rgba(29,106,114,.2);border-radius:100px;padding:.1rem .55rem}
-.pub{position:relative;background:var(--bone);border:1px solid var(--rule);border-radius:var(--r);padding:1.7rem 1.9rem 1.7rem 2.1rem;margin-bottom:1rem;transition:border-color .25s,box-shadow .25s}
-.pub:hover{border-color:rgba(201,168,76,.45);box-shadow:0 18px 44px -28px rgba(13,17,23,.45)}
-.pub::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:var(--r) 0 0 var(--r)}
-.pub[data-s="pub"]::before{background:var(--teal)}
-.pub[data-s="rev"]::before{background:var(--gold)}
-.pub[data-s="draft"]::before{background:var(--plum)}
-.pub.hide{display:none}
-.pill{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.24rem .7rem;border-radius:3px}
-.p-live{background:rgba(29,106,114,.1);color:var(--teal);border:1px solid rgba(29,106,114,.25)}
-.p-rev{background:rgba(201,168,76,.12);color:var(--goldd);border:1px solid rgba(201,168,76,.3)}
-.p-draft{background:rgba(109,74,168,.09);color:#563a86;border:1px solid rgba(109,74,168,.22)}
-.authors{font-size:.78rem;color:var(--t3);margin:.75rem 0 .4rem}
-.authors strong{color:var(--t1);font-weight:600}
-.pub h3{font-family:var(--serif);font-size:1.22rem;line-height:1.35;margin-bottom:.45rem}
-.venue{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;font-size:.77rem;font-weight:600;color:var(--teal)}
-.abs{margin-top:1rem;background:rgba(29,106,114,.035);border:1px solid rgba(29,106,114,.12);border-radius:var(--r)}
-.abs>summary{cursor:pointer;list-style:none;padding:.7rem 1rem;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);display:flex;align-items:center;gap:.5rem;border-radius:var(--r)}
-.abs>summary::-webkit-details-marker{display:none}
-.abs>summary::after{content:'\f078';font-family:"Font Awesome 6 Free";font-weight:900;font-size:.58rem;margin-left:auto;transition:transform .25s}
-.abs[open]>summary::after{transform:rotate(180deg)}
-.abs>summary:hover{background:rgba(29,106,114,.05)}
-.abs p{font-size:.845rem;color:var(--t2);line-height:1.85;padding:0 1rem 1.1rem}
-.pfoot{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
-.plink{font-size:.73rem;font-weight:600;color:var(--teal);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
-.plink:hover{color:var(--goldd)}
-
-/* ===== PROJECTS ===== */
-.employer{display:flex;flex-wrap:wrap;align-items:center;gap:1.2rem;background:var(--ink);border-left:3px solid var(--gold);border-radius:var(--r);padding:1.5rem 1.8rem;margin-bottom:3rem}
-.employer .eico{width:46px;height:46px;flex-shrink:0;border-radius:8px;background:rgba(201,168,76,.14);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.05rem}
-.employer b{display:block;font-family:var(--serif);font-size:1.25rem;color:#fff}
-.employer span{display:block;font-size:.77rem;color:var(--d3);margin-top:.15rem}
-.ewhen{margin-left:auto;text-align:right;font-size:.74rem;color:var(--d3)}
-.ewhen b{font-family:var(--sans);font-size:.78rem;color:var(--gold)}
-.proj{margin-bottom:4.5rem}.proj:last-child{margin-bottom:0}
-.ptop{display:flex;flex-wrap:wrap;gap:.8rem 1rem;align-items:baseline;margin-bottom:.6rem}
-.ptop h3{font-family:var(--serif);font-size:1.6rem;line-height:1.22;flex:1 1 320px}
-.badge{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:3px;white-space:nowrap}
-.b-live{background:var(--teal);color:#fff}.b-done{background:#3d4c5c;color:rgba(255,255,255,.88)}
-.pmeta{display:flex;flex-wrap:wrap;gap:.4rem 1.5rem;font-size:.79rem;color:var(--t3);margin-bottom:1.5rem}
-.pmeta i{color:var(--gold);margin-right:.4rem}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;margin-bottom:1.5rem}
-.kpi{background:var(--bone);padding:1.15rem 1rem;text-align:center}
-.kpi b{display:block;font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--teal);line-height:1}
-.kpi span{display:block;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t4);margin-top:.4rem}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;align-items:start}
-.panel{background:var(--bone);border:1px solid var(--rule);border-radius:var(--r);padding:1.7rem}
-.panel h4{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);font-weight:700;margin-bottom:1rem}
-.panel p{font-size:.87rem;color:var(--t2);line-height:1.85;margin-bottom:.9rem}.panel p:last-child{margin-bottom:0}
-.dots li{position:relative;font-size:.855rem;color:var(--t2);line-height:1.72;padding:.62rem 0 .62rem 1.35rem;border-bottom:1px solid var(--rule2)}
-.dots li:last-child{border-bottom:0}
-.dots li::before{content:'';position:absolute;left:0;top:1.2rem;width:5px;height:5px;border-radius:50%;background:var(--gold)}
-.dots strong{color:var(--t1);font-weight:600}
-.panel .chips{margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--rule2)}
-.figs{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.6rem}
-.fig{background:var(--bone);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-.fig img{width:100%;height:200px;object-fit:cover}
-.fig-ph{height:200px;background:linear-gradient(140deg,#e9f0f4,#dbe7ec 55%,#e4ecf2);border-bottom:1px dashed rgba(29,106,114,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;color:var(--teal);font-size:.78rem;font-weight:600;text-align:center;padding:1rem}
-.fig-ph i{font-size:1.8rem;opacity:.4}
-.fig-ph small{font-size:.62rem;font-weight:400;color:rgba(29,106,114,.65);word-break:break-all}
-.fig figcaption{padding:.9rem 1.1rem}
-.fig figcaption b{display:block;font-size:.85rem;margin-bottom:.25rem}
-.fig figcaption span{font-size:.77rem;color:var(--t3);line-height:1.6}
-.hr{height:2px;background:var(--thermal);opacity:.5;border:0;margin:3.5rem 0}
-
-/* ===== RESEARCH ROLE + THESIS ===== */
-.role-card{background:var(--bone);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-.rtop{display:grid;grid-template-columns:2fr 1fr;gap:2rem;padding:1.9rem;border-bottom:1px solid var(--rule2)}
-.rtop h3{font-family:var(--serif);font-size:1.4rem}
-.rwhere{font-size:.82rem;color:var(--teal);font-weight:600;margin:.3rem 0}
-.rsup{font-size:.8rem;color:var(--t3)}.rsup strong{color:var(--t1)}
-.rtitle{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--teal);margin-top:.6rem;line-height:1.45}
-.rwhen{text-align:right;font-size:.78rem;color:var(--t4)}
-.rbody{padding:1.6rem 1.9rem}
-.tri li{position:relative;font-size:.86rem;color:var(--t2);line-height:1.72;padding:.55rem 0 .55rem 1.35rem;border-bottom:1px solid var(--rule2)}
-.tri li:last-child{border-bottom:0}
-.tri li::before{content:'\25B8';position:absolute;left:0;top:.55rem;color:var(--teal);font-size:.7rem}
-.tri strong{color:var(--t1);font-weight:600}
-.thesis{position:relative;overflow:hidden;background:var(--ink);border-radius:var(--r);padding:2.4rem;margin-top:2.2rem}
-.thesis::after{content:'\201C';position:absolute;right:1.8rem;top:-1rem;font-family:var(--serif);font-size:11rem;color:rgba(201,168,76,.06);line-height:1}
-.thesis h3{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:#fff;line-height:1.35;margin:.8rem 0 1rem;max-width:34ch}
-.tsup{font-size:.83rem;color:var(--d2);margin-bottom:1.2rem}.tsup strong{color:var(--gold)}
-.thesis .body{font-size:.88rem;color:var(--d2);line-height:1.85;max-width:72ch}
-.thesis .chips{margin-top:1.4rem}
-.tlink{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none}
-
-/* ===== SKILLS ===== */
-.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.skill{background:var(--bone);border:1px solid var(--rule);border-radius:var(--r);padding:1.7rem;transition:all .25s var(--ease)}
-.skill:hover{border-color:rgba(201,168,76,.4);transform:translateY(-3px)}
-.skill.dark{background:var(--ink2);border-color:rgba(255,255,255,.07)}
-.sico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:.98rem}
-.i-teal{background:rgba(29,106,114,.12);color:var(--teal)}
-.i-plum{background:rgba(109,74,168,.1);color:var(--plum)}
-.i-amber{background:rgba(217,119,6,.1);color:#c2703a}
-.i-gold{background:rgba(201,168,76,.15);color:var(--gold)}
-.i-rose{background:rgba(190,18,60,.08);color:#be123c}
-.skill h3{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--t4);margin-bottom:.95rem}
-.skill.dark h3{color:var(--d3)}
-.skill.dark .chip{background:rgba(255,255,255,.06);color:var(--d2);border-color:rgba(255,255,255,.1)}
-.skill.dark .chip:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
-.certs li{display:flex;gap:.7rem;align-items:flex-start;font-size:.83rem;color:var(--d2);line-height:1.55;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
-.certs li:last-child{border-bottom:0}
-.certs li i{color:var(--gold);font-size:.68rem;margin-top:.25rem;flex-shrink:0}
-.ielts{display:flex;align-items:baseline;gap:.7rem;margin-top:1.2rem;padding:.9rem 1rem;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:var(--r)}
-.ielts b{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--gold);line-height:1}
-.ielts span{display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--d3)}
-.ielts small{display:block;font-size:.72rem;color:var(--d2);margin-top:.15rem}
-
-/* ===== GALLERY ===== */
-.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
-.shot{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--rule);background:var(--bone);aspect-ratio:4/3}
-.shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.shot:hover img{transform:scale(1.05)}
-.shot-ph{height:100%;background:linear-gradient(140deg,#eef1f4,#e3e9ee);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--t4);font-size:.74rem;text-align:center;padding:1rem}
-.shot-ph i{font-size:1.5rem;opacity:.45}
-.shot figcaption{position:absolute;inset:auto 0 0 0;padding:1.4rem .95rem .8rem;color:#fff;font-size:.78rem;background:linear-gradient(transparent,rgba(13,17,23,.85))}
-
-/* ===== CONTACT ===== */
-.cgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3.5rem;align-items:start}
-.ccards{display:flex;flex-direction:column;gap:.6rem}
-.ccard{display:flex;align-items:center;gap:1rem;padding:.9rem 1rem;border:1px solid rgba(255,255,255,.1);border-radius:var(--r);background:rgba(255,255,255,.03);text-decoration:none;transition:all .2s}
-.ccard:hover{border-color:rgba(201,168,76,.55);transform:translateX(3px)}
-.cico{width:42px;height:42px;flex-shrink:0;border-radius:8px;background:rgba(201,168,76,.12);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.92rem;transition:all .22s}
-.ccard:hover .cico{background:var(--gold);color:var(--ink)}
-.ccard b{display:block;font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--d3);font-weight:700}
-.ccard span{display:block;font-size:.86rem;color:var(--d1);font-weight:500;word-break:break-word}
-.quote{margin-top:2rem;padding-left:1.2rem;border-left:2px solid var(--gold);font-family:var(--serif);font-style:italic;font-size:1.08rem;color:var(--d2);line-height:1.65}
-.quote cite{display:block;font-family:var(--sans);font-style:normal;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:.7rem}
-.form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:2.2rem}
-.form h3{font-family:var(--serif);font-size:1.5rem;color:#fff;margin-bottom:.4rem}
-.form>p{font-size:.83rem;color:var(--d3);margin-bottom:1.6rem}
-.f{margin-bottom:1rem}
-.f label{display:block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--d3);font-weight:600;margin-bottom:.45rem}
-.f input,.f textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.8rem 1rem;font-family:var(--sans);font-size:.88rem;color:#fff;outline:none;transition:all .2s}
-.f input::placeholder,.f textarea::placeholder{color:rgba(255,255,255,.22)}
-.f input:focus,.f textarea:focus{border-color:var(--gold);background:rgba(255,255,255,.08)}
-.f textarea{resize:vertical;min-height:130px}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.fnote{font-size:.72rem;color:var(--d3);text-align:center;margin-top:.8rem}
-
-/* ===== FOOTER ===== */
-.foot{background:#070b10;border-top:1px solid rgba(255,255,255,.06);padding:3rem 1.75rem 1.6rem}
-.foot-in{max-width:var(--wrap);margin:auto}
-.ftop{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,.07)}
-.fbrand{font-family:var(--serif);font-size:1.3rem;color:#fff;margin-bottom:.5rem}
-.fbrand span{color:var(--gold)}
-.fblurb{font-size:.83rem;color:var(--d3);line-height:1.8;max-width:38ch}
-.fcol h4{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
-.fcol a{display:block;font-size:.83rem;color:var(--d2);text-decoration:none;padding:.28rem 0;transition:color .2s}
-.fcol a:hover{color:var(--gold)}
-.fbot{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;padding-top:1.4rem}
-.fbot p{font-size:.75rem;color:var(--d3)}
-.fsoc{display:flex;gap:.8rem}
-.fsoc a{width:34px;height:34px;border-radius:7px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--d3);font-size:.8rem;text-decoration:none;transition:all .22s}
-.fsoc a:hover{color:var(--gold);border-color:var(--gold)}
-#top{position:fixed;right:1.1rem;bottom:1.1rem;z-index:150;width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--ink);border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s;box-shadow:0 8px 22px rgba(13,17,23,.3)}
-#top.show{opacity:1;visibility:visible;transform:none}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1040px){.metrics-in{grid-template-columns:repeat(3,1fr);gap:1.2rem 0}.metric:nth-child(3){border-right:0}.sgrid,.figs,.gal{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:900px){.hero-in{grid-template-columns:1fr;gap:2.5rem}.pic{display:none}.two,.split,.cgrid,.rtop,.frow{grid-template-columns:1fr}.rwhen{text-align:left}.kpis{grid-template-columns:repeat(2,1fr)}.ewhen{margin-left:0;text-align:left;width:100%}.ftop{grid-template-columns:1fr 1fr}.fbcol{grid-column:1/-1}}
-@media(max-width:760px){.burger{display:block}.nav{position:absolute;top:var(--nav);left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:0;background:#0d1117;padding:.6rem 1.75rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 22px 40px -20px rgba(0,0,0,.75)}.nav.open{display:flex}.nav a{padding:.8rem .2rem;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem}.nav a.on::after{display:none}.cta,.brole{display:none}}
-@media(max-width:620px){.sec{padding:3.8rem 1.15rem}.hero{padding:calc(var(--nav) + 3rem) 1.15rem 3.2rem}.head-in,.metrics-in,.foot{padding-left:1.15rem;padding-right:1.15rem}.metrics-in{grid-template-columns:repeat(2,1fr)}.metric{border-right:0;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:1rem}.metric:last-child{border-bottom:0}.sgrid,.figs,.gal,.ticks,.ftop{grid-template-columns:1fr}.pub{padding:1.35rem 1.2rem 1.35rem 1.5rem}.panel,.rtop,.rbody,.form,.employer{padding:1.3rem}.thesis{padding:1.6rem}.kpis{grid-template-columns:1fr 1fr}}
-@media print{.head,#top,.form,.acts,.social,.filters{display:none!important}body{background:#fff}.sec{padding:1.2rem 0}.sr{opacity:1!important;transform:none!important}.abs p{display:block!important}}
-</style>
-</head>
-<body>
-<a class="skip" href="#main">Skip to main content</a>
-
-<!-- ══════════ HEADER ══════════ -->
-<header class="head">
-  <div class="head-in">
-    <a class="brand" href="#home"><span class="mark">M</span>
-      <span><span class="bname">M. M. Mustakim Billah</span><span class="brole">Urban planner &amp; geospatial researcher</span></span></a>
-    <nav class="nav" id="nav" aria-label="Primary">
-      <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a>
-      <a href="#academic">Academic</a><a href="#skills">Skills</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
-    </nav>
-    <!-- EDIT · your CV file --><a class="cta" href="assets/docs/CV.pdf"><i class="fa-solid fa-download"></i> CV</a>
-    <button class="burger" type="button" aria-label="Open menu" aria-controls="nav" aria-expanded="false">
-      <svg class="b" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      <svg class="x" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-</header>
-
-<main id="main">
-
-<!-- ══════════ HERO ══════════ -->
-<section class="hero" id="home">
-  <div class="hero-bg" aria-hidden="true"><svg id="contours" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#c9a84c" stroke-linejoin="round"></svg></div>
-  <div class="hero-in">
-    <div>
-      <p class="eyebrow">Dhaka, Bangladesh</p>
-      <h1>M. M. Mustakim<em>Billah</em></h1>
-      <p class="role"><span>GIS</span><i></i><span>Remote sensing</span><i></i><span>Urban climate science</span></p>
-      <p class="lede">I read cities through satellite data. My work joins urban climate science, machine learning and field survey into master plans that hold up against heat, flood and rapid growth across South Asia.</p>
-      <div class="acts">
-        <a class="btn b-solid" href="#research"><i class="fa-solid fa-flask"></i> Read the research</a>
-        <a class="btn b-line" href="#projects"><i class="fa-solid fa-map-location-dot"></i> See the projects</a>
-      </div>
-      <div class="social">
-        <a href="https://www.linkedin.com/in/mmustakimbillah/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://www.researchgate.net/profile/Mustakim-Billah-6" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
-        <!-- EDIT · Scholar --><a href="#" aria-label="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
-        <!-- EDIT · GitHub --><a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:mustakim.billah.m98@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-      </div>
-    </div>
-    <!-- EDIT · PORTRAIT: add assets/img/portrait.jpg, delete .pic-ph, uncomment the img -->
-    <div class="pic">
-      <!-- <img src="assets/img/portrait.jpg" alt="M. M. Mustakim Billah"/> -->
-      <div class="pic-ph"><i class="fa-solid fa-user"></i><b>Portrait photo</b><small>assets/img/portrait.jpg</small></div>
-    </div>
-  </div>
-</section>
-
-<div class="metrics"><div class="metrics-in">
-  <div class="metric"><b>9</b><span>Papers &amp; chapters</span></div>
-  <div class="metric"><b>8,080</b><span>Acres master-planned</span></div>
-  <div class="metric"><b>37,178</b><span>Survey points processed</span></div>
-  <div class="metric"><b>3</b><span>Upazila town plans</span></div>
-  <div class="metric"><b>3.70</b><span>Senior year GPA</span></div>
-</div></div>
-
-<!-- ══════════ ABOUT ══════════ -->
-<section class="sec" id="about"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">About</p><h2>Planner, researcher,<br/><em>spatial thinker</em></h2></div>
-  <div class="two">
-    <div class="prose sr">
-      <p class="big">My work sits at the intersection of urban climate science, satellite analytics and evidence-based spatial planning for South Asia's fastest-growing cities.</p>
-      <p>I hold a <strong>Bachelor of Urban and Regional Planning (BURP)</strong> from Chittagong University of Engineering and Technology, finishing 10th in my cohort with a GPA of 3.36 out of 4.00 overall and 3.70 in the senior year, on a merit scholarship. That grounding runs in two directions at once: rigorous academic research on one side, high-stakes consultancy practice on the other.</p>
-      <p>At <strong>Sheltech Consultants (Pvt.) Ltd.</strong> I lead the GIS and remote sensing workflows behind large government master plans — an 8,080-acre World Bank-aligned coastal aquaculture estate in Cox's Bazar, and multi-upazila town plans for LGED that fold participatory GIS, multi-criteria spatial analysis and climate-resilient zoning into every deliverable.</p>
-      <p>My research quantifies surface and atmospheric <strong>urban heat island dynamics</strong> using Landsat 8 TIRS imagery, MODIS datasets and machine-learning pipelines. The point of all of it is to translate spatial science into policy the rapidly urbanising megacities of the Global South can actually act on.</p>
-    </div>
-    <div class="sr">
-      <div class="dark-card">
-        <h3><i class="fa-solid fa-compass"></i> Research interests</h3>
-        <ul class="dash">
-          <li>Urban heat island dynamics, surface and atmospheric</li>
-          <li>Satellite remote sensing: Landsat 8, MODIS, Sentinel-1 SAR</li>
-          <li>Machine learning for spatial prediction and air quality mapping</li>
-          <li>Urban form metrics and land use change detection</li>
-          <li>Flood inundation mapping and coastal climate resilience</li>
-          <li>Drought, landslide and disaster risk assessment</li>
-          <li>Evidence-based master planning for South Asian cities</li>
-        </ul>
-      </div>
-      <div class="links">
-        <a class="lrow" href="https://www.linkedin.com/in/mmustakimbillah/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn profile</span><i class="fa-solid fa-arrow-right go"></i></a>
-        <a class="lrow" href="https://www.researchgate.net/profile/Mustakim-Billah-6" target="_blank" rel="noopener"><i class="fa-brands fa-researchgate"></i><span>ResearchGate profile</span><i class="fa-solid fa-arrow-right go"></i></a>
-        <!-- EDIT · ORCID --><a class="lrow" href="#"><i class="fa-solid fa-id-badge"></i><span>ORCID &amp; Google Scholar</span><i class="fa-solid fa-arrow-right go"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="two" style="margin-top:3.5rem;gap:3rem">
-    <div class="sr">
-      <h3 class="subh"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-      <div class="tline">
-        <div class="tl"><b>2018 – 2023</b><strong>BURP, Urban &amp; Regional Planning</strong><span>Chittagong University of Engineering &amp; Technology (CUET)</span></div>
-        <div class="tl"><b>2017</b><strong>Higher Secondary Certificate</strong><span>Notre Dame College · GPA 5.00 / 5.00</span></div>
-        <div class="tl"><b>2015</b><strong>Secondary School Certificate</strong><span>Ideal School &amp; College · GPA 5.00 / 5.00</span></div>
-      </div>
-      <div class="callout"><b>Undergraduate record</b><span>Chittagong University of Engineering and Technology</span>
-        <div class="chips"><span class="chip c-gold">GPA 3.36 / 4.00</span><span class="chip c-gold">3.70 senior year</span><span class="chip c-teal">Ranked 10th in cohort</span><span class="chip c-teal">Merit scholarship</span></div>
-      </div>
-    </div>
-    <div class="sr">
-      <h3 class="subh"><i class="fa-solid fa-briefcase"></i> Positions</h3>
-      <div class="tline">
-        <div class="tl"><b>2026 – Present</b><strong>Urban Planner | GIS &amp; RS Specialist</strong><span>Sheltech Consultants (Pvt.) Ltd., Dhaka</span></div>
-        <div class="tl"><b>2024 – 2025</b><strong>Assistant Urban Planner</strong><span>Sheltech Consultants (Pvt.) Ltd., Dhaka</span></div>
-        <div class="tl"><b>May – Nov 2023</b><strong>Research Assistant, GIS Laboratory</strong><span>Dept. of Urban &amp; Regional Planning, CUET</span></div>
-      </div>
-      <h3 class="subh" style="margin-top:2rem"><i class="fa-solid fa-people-group"></i> Beyond the desk</h3>
-      <ul class="ticks">
-        <li><i class="fa-solid fa-circle"></i> Communication &amp; PR Secretary — CUET Planners Alumni Association</li>
-        <li><i class="fa-solid fa-circle"></i> Sports Secretary — Greater Rajshahi Association, CUET</li>
-        <li><i class="fa-solid fa-circle"></i> Assistant Organizing Secretary — CUET Sports Club</li>
-        <li><i class="fa-solid fa-circle"></i> Sports Secretary — Greater Dhaka Association, CUET</li>
-        <li><i class="fa-solid fa-circle"></i> Assistant General Secretary — Notredamian Association of CUET</li>
+<!-- ========================================================================== -->
+<!-- SECTION 1: HOME (HERO & NAVIGATION)                                        -->
+<!-- ========================================================================== -->
+<div id="home" align="center">
+
+# M M Mustakim Billah
+### Urban Planner & GIS / Remote Sensing Specialist
+**Climate-Resilient Master Planning • Spatial Informatics • Environmental Diagnostics**
+
+<br/>
+
+[![Location: Dhaka, Bangladesh](https://img.shields.io/badge/Location-Dhaka%2C%20Bangladesh-0A2540?style=for-the-badge&logo=google-maps&logoColor=white)](#contact-me)
+[![Affiliation: Sheltech Consultants](https://img.shields.io/badge/Affiliation-Sheltech%20Consultants-1E3A8A?style=for-the-badge&logo=blueprint&logoColor=white)](#professional-experience)
+[![Degree: CUET BURP](https://img.shields.io/badge/Education-B.Sc.%20in%20URP%20(CUET)-047857?style=for-the-badge&logo=academia&logoColor=white)](#about)
+[![Member: BIP](https://img.shields.io/badge/Member-Bangladesh%20Institute%20of%20Planners-B45309?style=for-the-badge)](#about)
+
+<br/>
+
+---
+
+### 🧭 Navigation
+[🏠 Home](#home) &nbsp;•&nbsp; 
+[👤 About](#about) &nbsp;•&nbsp; 
+[📚 Publications & Research](#publications) &nbsp;•&nbsp; 
+[💼 Professional Experience](#professional-experience) &nbsp;•&nbsp; 
+[🛠 Skills & Competencies](#skills) &nbsp;•&nbsp; 
+[🖼 Gallery & Projects](#gallery) &nbsp;•&nbsp; 
+[📬 Contact Me](#contact-me)
+
+---
+</div>
+
+<br/>
+
+<!-- ========================================================================== -->
+<!-- SECTION 2: ABOUT                                                           -->
+<!-- ========================================================================== -->
+<div id="about"></div>
+
+## 👤 About Me
+
+I am a dedicated **Urban Planner and Spatial Data Specialist** based in Dhaka, Bangladesh, with comprehensive experience bridging urban planning theory, geospatial informatics, and real-world infrastructure delivery. Currently working with **Sheltech Consultants (Pvt.) Ltd.**, I specialize in large-scale master planning, environmental and social impact assessments (SESIA), and climate-resilient spatial modeling for government authorities and multilateral development agencies.
+
+### Academic Foundation
+- **Bachelor of Urban and Regional Planning (BURP)**  
+  *Chittagong University of Engineering & Technology (CUET)*  
+  - **Academic Standing:** Graduated with a CGPA of **3.36 / 4.00** (Ranked **11th** in session)
+  - **Former Academic Role:** Served as Graduate Research Assistant at CUET, contributing to spatial data pipelines and analytical documentation.
+
+### Core Focus Areas
+- **Spatial Analytics & Modeling:** Advanced GIS data manipulation, Digital Elevation Model (DEM) hydrologic modeling, and land-use/land-cover (LULC) classification using satellite imagery.
+- **Climate Resilience & Hazard Mitigation:** Identifying socio-ecological vulnerabilities, coastal hazard mapping, and nature-based infrastructure mitigation.
+- **Urban Governance & PGIS:** Integrating qualitative community intelligence (PRA, FGD, KII) with formal geodatabase systems to craft equitable, sustainable master plans.
+
+<br/>
+
+<!-- ========================================================================== -->
+<!-- SECTION 3: PUBLICATIONS & RESEARCH                                        -->
+<!-- ========================================================================== -->
+<div id="publications"></div>
+
+## 📚 Publications & Academic Research
+
+My research centers on applying geospatial machine learning, remote sensing datasets, and empirical modeling to urban climatology, air quality, and vulnerable coastal socio-ecological systems.
+
+### 📄 Peer-Reviewed Manuscripts & Working Papers
+
+1. **Advanced Environmental Diagnostics & Predictive Modeling in Coastal Aquaculture**
+   - **Focus:** Multi-parametric assessment of soil biogeochemistry, estuarine water quality indices, and small-data machine learning forecasting for sustainable aquaculture ecosystems.
+   - **Study Area:** Chakaria Coastal Belt, Cox’s Bazar.
+   - **Methodology:** Multivariate statistics, spatial interpolation, predictive ML modeling.
+
+2. **Urban Heat Island (UHI) Dynamics & Land Surface Temperature (LST) Variations**
+   - **Focus:** Spatio-temporal evaluation of surface temperature trends in relation to urban form and normalized difference vegetation/built-up indices (NDVI/NDBI).
+   - **Data & Tools:** Multi-temporal Landsat 8/9 TIRS & OLI imagery, GEE, statistical spatial regression.
+   - **Scope:** Major metropolitan regions (Dhaka & Chittagong).
+
+3. **High-Resolution Air Quality Vulnerability Mapping via Machine Learning**
+   - **Focus:** Modeling tropospheric pollutant concentrations (NO₂, PM2.5, aerosols) against demographic exposure and built-environment density.
+   - **Data & Tools:** Sentinel-5P TROPOMI, MODIS aerosol optical depth, Random Forest (RF) regression in Python/R.
+
+4. **Multi-Modal Transit Integration & Walkability Assessment in Secondary Towns**
+   - **Focus:** Micro-level pedestrian accessibility modeling and connectivity optimization in emerging municipal centers under national infrastructure investment programs.
+
+<br/>
+
+<!-- ========================================================================== -->
+<!-- SECTION 4: PROFESSIONAL EXPERIENCE                                         -->
+<!-- ========================================================================== -->
+<div id="professional-experience"></div>
+
+## 💼 Professional Experience
+
+### 🏢 **Urban Planner & Project Coordinator** | *Sheltech Consultants (Pvt.) Ltd.*
+*June 2024 – March 2026*
+- **Project:** *Master Plan Preparation Support for Government Shrimp Estate at Chakaria, Cox’s Bazar*
+- **Client / Funding:** Department of Fisheries (DoF), Bangladesh • Supported by **World Bank / SCMFP**
+- **Key Contributions:**
+  - Led the multi-disciplinary lifecycle as Project Coordinator, directing civil engineering, environmental, and socio-economic survey teams.
+  - Processed large-scale topographic datasets (**37,000+ spot levels**) to generate sub-meter resolution **Digital Elevation Models (DEM)** for tidal inundation and drainage modeling across an **8,080-acre** coastal territory.
+  - Authored critical baseline chapters for the **Strategic Environmental and Social Impact Assessment (SESIA)** and integrated Blue Economy principles into the 50-year sustainable Master Plan.
+
+---
+
+### 🏢 **Urban Planner & GIS / RS Specialist** | *Sheltech Consultants (Pvt.) Ltd.*
+*February 2024 – Present*
+- **Project:** *Upazila Town (Non-Municipal) Master Plan Preparation and Basic Infrastructure Development Project (UTMIDP)*
+- **Jurisdictions:** Lalmai, Monoharganj, and Gowainghat Upazilas
+- **Client:** Local Government Engineering Department (LGED), Government of Bangladesh
+- **Key Contributions:**
+  - Directed GIS workflows and high-resolution satellite imagery classification to create authoritative spatial land-use inventories.
+  - Conducted multi-criteria spatial overlay evaluations (MCDA) combining seismic risk, geotechnical data, and hydrology to identify suitable growth corridors.
+  - Architected enterprise Geodatabase structures (RDBMS) harmonizing engineering spot surveys, socio-economic profiles, and transportation flows.
+  - Facilitated Participatory GIS (PGIS) stakeholder sessions, translating citizen feedback into enforceable zoning and infrastructure phasing plans.
+
+---
+
+### 🏛️ **Research Assistant** | *Chittagong University of Engineering & Technology (CUET)*
+*Previous Academic Appointment*
+- Coordinated departmental spatial research initiatives, assisted faculty in remote sensing data pipelines, and supervised field data acquisition for urban morphology studies.
+
+<br/>
+
+<!-- ========================================================================== -->
+<!-- SECTION 5: SKILLS & COMPETENCIES                                           -->
+<!-- ========================================================================== -->
+<div id="skills"></div>
+
+## 🛠 Skills & Competencies
+
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h4>🗺️ Geospatial & Remote Sensing</h4>
+      <ul>
+        <li><b>Desktop GIS:</b> ArcGIS Pro, ArcMap 10.x, QGIS</li>
+        <li><b>Cloud & RS Platforms:</b> Google Earth Engine (GEE)</li>
+        <li><b>Spatial Analysis:</b> Spatial Analyst, 3D Analyst, Network Analyst</li>
+        <li><b>Surveys & Modeling:</b> Digital Elevation Models (DEM), Hydrologic Flow, Land-Use/Land-Cover (LULC) Classification</li>
+        <li><b>Field GIS:</b> KoboToolbox, GPS/GNSS Data Processing, PGIS</li>
       </ul>
-    </div>
-  </div>
-</div></section>
-
-<!-- ══════════ PUBLICATIONS ══════════
-  ADD A PAPER: copy an <article class="pub"> block.
-  data-t = journal | chapter | conf   (filter)
-  data-s = pub | rev | draft          (left stripe colour)
-═══════════════════════════════════════════════ -->
-<section class="sec bg-bone" id="research"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">Publications</p><h2>Research output and<br/><em>active pipelines</em></h2>
-    <p>Nine works across journals, an Elsevier book series and peer-reviewed conferences. Open any card for the full abstract.</p></div>
-
-  <div class="filters sr" role="group" aria-label="Filter publications">
-    <button class="fbtn" type="button" data-f="all" aria-pressed="true">All work</button>
-    <button class="fbtn" type="button" data-f="journal" aria-pressed="false">Journal articles</button>
-    <button class="fbtn" type="button" data-f="chapter" aria-pressed="false">Book chapters</button>
-    <button class="fbtn" type="button" data-f="conf" aria-pressed="false">Conference papers</button>
-  </div>
-
-  <div class="pgroup sr">
-    <h3 class="glabel"><i class="fa-solid fa-book-open"></i> Journal articles <span class="n">3</span></h3>
-
-    <article class="pub" data-t="journal" data-s="draft">
-      <span class="pill p-draft"><i class="fa-solid fa-pen"></i> In preparation</span>
-      <p class="authors"><strong>Billah, M. M. M.</strong>, Sun, S. R.</p>
-      <h3>Machine learning-driven multifactor water quality indexing for aquaculture site suitability assessment: a case study in Khulna Division, Bangladesh</h3>
-      <p class="venue"><i class="fa-solid fa-scroll"></i> Target journal to be confirmed</p>
-      <details class="abs"><summary>Read abstract</summary><p>Rapid expansion of aquaculture in the Khulna Division, Bangladesh, necessitates precise, data-driven site selection to ensure environmental sustainability and economic viability. This study presents a novel, machine learning-driven multifactor indexing framework for aquaculture site suitability assessment. A comprehensive primary field survey was conducted across 100 stratified points to collect a holistic dataset comprising critical physicochemical water and soil parameters — depth, temperature, total dissolved solids, electrical conductivity, water pH, soil pH, specific gravity, salinity, dissolved oxygen, nitrite, nitrate, total ammonia nitrogen, phosphate, moisture and light — alongside localised socio-economic data. To overcome the spatial limitations of point-based sampling, multiple machine learning algorithms were trained and cross-validated to model the empirical relationships between these ground-truth measurements and high-resolution satellite covariates. The highest-performing model was selected to predict continuous spatial raster surfaces for each parameter across the study area. To eliminate prediction artefacts and standardise the spatial gradient for multi-criteria evaluation, 400 reference points were randomly extracted from the model outputs and processed using inverse distance weighting interpolation. Concurrently, an analytic hierarchy process was conducted through structured consultations with government officials, industry practitioners and aquaculture experts to calculate the relative importance weights of each evaluated factor. These weights were integrated with the smoothed raster layers via weighted overlay analysis. The resulting aquaculture site suitability index categorises the region into varying suitability zones, providing a robust, spatially explicit decision-support tool for stakeholders optimising future aquaculture development.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Water Quality Index</span><span class="chip">Aquaculture</span><span class="chip">Machine Learning</span><span class="chip">Khulna</span><span class="chip">GIS</span></div>
-    </article>
-
-    <article class="pub" data-t="journal" data-s="draft">
-      <span class="pill p-draft"><i class="fa-solid fa-pen"></i> In preparation</span>
-      <p class="authors"><strong>Billah, M. M. M.</strong>, Sun, S. R.</p>
-      <h3>Rapid flood inundation mapping in southeastern Bangladesh using Google Earth Engine, Sentinel-1 SAR and machine learning</h3>
-      <p class="venue"><i class="fa-solid fa-scroll"></i> Target journal to be confirmed</p>
-      <details class="abs"><summary>Read abstract</summary><p>In July 2026, relentless monsoon rain and hill torrents triggered severe flash flooding across Chattogram's southern upazilas, leaving over a million people stranded. Satkania, Banshkhali, Chandanaish and Lohagara bore the brunt, with embankment breaches along the Sangu and Dolu rivers submerging homes, roads and health facilities, while the Chattogram–Cox's Bazar Highway and the Keranihat–Bandarban link were cut off, isolating Bandarban Hill District. During such fast-moving disasters ground access is limited and delayed, making rapid satellite-based flood mapping essential for emergency response. This study maps the flood extent using Sentinel-1 SAR imagery processed on Google Earth Engine. After thermal noise removal, radiometric calibration, terrain correction and speckle filtering, VV and VH backscatter values are used to separate floodwater from land and permanent water bodies. Two classification approaches are compared — pixel-based thresholding and a Random Forest machine-learning classifier — each validated against independent reference points to assess accuracy. The resulting flood maps are overlaid with OpenStreetMap building and road data to estimate the number of structures and key transport links affected across the worst-hit upazilas. The work contributes a satellite-derived, reproducible flood-extent assessment of this event and quantifies infrastructure exposure in one of Bangladesh's most flood-vulnerable hill-drainage regions.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Flood Inundation Mapping</span><span class="chip">Sentinel-1 SAR</span><span class="chip">Google Earth Engine</span><span class="chip">Random Forest</span><span class="chip">Flash Flood</span></div>
-    </article>
-
-    <article class="pub" data-t="journal" data-s="draft">
-      <span class="pill p-draft"><i class="fa-solid fa-pen"></i> In preparation</span>
-      <p class="authors">Uzzaman, M. A., <strong>Billah, M. M. M.</strong>, Faysal, F. A.</p>
-      <h3>Multi-temporal Landsat analysis of urban form effects on land surface temperature in Dhaka Metropolitan Area, Bangladesh</h3>
-      <p class="venue"><i class="fa-solid fa-scroll"></i> Target journal to be confirmed</p>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Land Surface Temperature</span><span class="chip">Urban Form</span><span class="chip">Landsat</span><span class="chip">Dhaka</span><span class="chip">Remote Sensing</span></div>
-    </article>
-  </div>
-
-  <div class="pgroup sr">
-    <h3 class="glabel"><i class="fa-solid fa-bookmark"></i> Book chapters <span class="n">3</span></h3>
-    <p style="font-size:.87rem;color:var(--t3);line-height:1.75;margin:-.5rem 0 1.3rem;max-width:70ch">All three appear in <em>Remote Sensing and Environmental Justice: Technologies for Environmental Equity</em>, Elsevier, ISBN 9780443449567, 2027.</p>
-
-    <article class="pub" data-t="chapter" data-s="draft">
-      <span class="pill p-draft"><i class="fa-solid fa-pen"></i> Draft in progress</span>
-      <p class="authors">Uzzaman, M. A., <strong>Billah, M. M. M.</strong>, Faysal, F. A.</p>
-      <h3>Integrating satellite-derived data and machine learning for air quality assessment and vulnerability mapping in a rapidly urbanizing South Asian megacity</h3>
-      <p class="venue"><i class="fa-solid fa-book"></i> Elsevier · ISBN 9780443449567 · 2027</p>
-      <details class="abs"><summary>Read abstract</summary><p>This study undertakes a comprehensive spatiotemporal analysis of air quality trends within Dhaka city, Bangladesh. The focus period of 2019 to 2023 allows examination of pollution dynamics over a recent five-year span, capturing critical changes in the urban environment. By integrating machine learning and advanced mapping techniques, a colour gradient was used to visualise fluctuations in pollutant concentrations. Key pollutants including SO₂, NO₂, O₃, PM₂.₅ and CO were monitored due to their adverse health impacts. The findings reveal a significant decline in air quality, with intensified pollution hotspots shifting spatially over time. In 2019 the western and southwestern thanas — Pallabi, Mirpur and Tejgaon — displayed the highest pollutant levels. By 2023 a more uniform yet concerning distribution of elevated pollution was observed, particularly in central and northern regions such as Turag and Sher-e-Bangla Nagar, while northeastern areas including Gulshan and Khilkhet consistently demonstrated relatively lower levels. Temporal distributions of PM₂.₅ and other gaseous pollutants were analysed alongside their interactions using Pearson correlation, and air quality index trends were examined through scatter plots and time-series analysis. A comparative evaluation of model performance between 2019 and 2023 further substantiated these findings. Overall the study indicates a worsening environmental and public health concern, and underscores the need for evidence-based policy action and sustainable urban planning.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Air Quality Assessment</span><span class="chip">Vulnerability Mapping</span><span class="chip">PM2.5</span><span class="chip">Spatiotemporal Analysis</span><span class="chip">Random Forest</span></div>
-    </article>
-
-    <article class="pub" data-t="chapter" data-s="draft">
-      <span class="pill p-draft"><i class="fa-solid fa-pen"></i> Draft in progress</span>
-      <p class="authors">Uzzaman, M. A., <strong>Billah, M. M. M.</strong>, Faysal, F. A.</p>
-      <h3>Spatiotemporal transformation of meteorological to agricultural drought in northwestern Bangladesh using RS and GIS techniques</h3>
-      <p class="venue"><i class="fa-solid fa-book"></i> Elsevier · ISBN 9780443449567 · 2027</p>
-      <details class="abs"><summary>Read abstract</summary><p>Drought is one of the most critical environmental hazards affecting agriculture, water resources and livelihoods in Bangladesh, particularly in its northwestern region. This study performs meteorological and agricultural drought assessments, both individually and conjointly, to analyse spatial and temporal drought variability between 2000 and 2018. Three indices were employed: the Standardized Precipitation Index for meteorological drought, and the Vegetation Condition Index together with the Standardized Soil Moisture Index for agricultural drought. A Composite Drought Index was developed to jointly evaluate conditions, while Local Indicators of Spatial Autocorrelation were applied to identify drought hotspots. Results reveal that meteorological droughts predominantly occurred during the winter months, while agricultural droughts extended across both winter and summer, severely affecting crop-dependent districts such as Dinajpur, Rangpur and Thakurgaon. The Composite Drought Index highlighted persistent vulnerability in the western and northern districts, identifying frequent hotspots in Naogaon, Rajshahi, Dinajpur and Lalmonirhat. Pearson correlation analysis demonstrated significant linkages among precipitation, soil moisture and vegetation indices, although the strength of relationships varied by year. A Random Forest model applied to future scenarios indicates a worsening trend by 2025 and 2035, with severe droughts expanding in intensity and spatial extent. These findings underscore the urgent need for integrated drought monitoring and adaptive management to enhance agricultural resilience and food security.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">SPI</span><span class="chip">Vegetation Condition Index</span><span class="chip">Composite Drought Index</span><span class="chip">Spatial Autocorrelation</span><span class="chip">Food Security</span></div>
-    </article>
-
-    <article class="pub" data-t="chapter" data-s="draft">
-      <span class="pill p-draft"><i class="fa-solid fa-pen"></i> Draft in progress</span>
-      <p class="authors">Uzzaman, M. A., <strong>Billah, M. M. M.</strong>, Faysal, F. A.</p>
-      <h3>Explainable hybrid ensemble modeling with remote sensing and GIS for equity-oriented landslide susceptibility mapping in southeastern Bangladesh</h3>
-      <p class="venue"><i class="fa-solid fa-book"></i> Elsevier · ISBN 9780443449567 · 2027</p>
-      <details class="abs"><summary>Read abstract</summary><p>Landslides remain one of the most pervasive geo-environmental hazards in steep and rapidly changing landscapes, where complex interactions between terrain, lithology, hydrology and anthropogenic influences drive slope instability. This study develops a high-resolution landslide susceptibility map by integrating remote sensing, GIS-based spatial analysis and hybrid modelling approaches. A comprehensive suite of conditioning factors — slope, curvature, relief, lithology, rainfall extremes, topographic wetness index, stream power index, NDVI, land use, stream and road proximity and population density — was prepared and standardised to ensure spatial comparability. The analytic hierarchy process was applied to derive expert-informed weights and generate an initial susceptibility assessment. To strengthen predictive performance and capture nonlinear variable interactions, extreme gradient boosting was implemented as a complementary machine learning approach. The integration of expert-driven and data-driven outputs allowed a robust evaluation of spatial patterns and susceptibility classes. Results demonstrate that the XGBoost model provides enhanced class discrimination, particularly in areas with complex topographic and hydrometeorological conditions, outperforming purely knowledge-based methods. The final susceptibility zonation delineates very low to very high risk areas, offering critical insight for early warning, land-use planning and disaster risk reduction.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Landslide Susceptibility</span><span class="chip">XGBoost</span><span class="chip">AHP</span><span class="chip">Remote Sensing</span></div>
-    </article>
-  </div>
-
-  <div class="pgroup sr">
-    <h3 class="glabel"><i class="fa-solid fa-microphone"></i> Conference proceedings <span class="n">3</span></h3>
-
-    <article class="pub" data-t="conf" data-s="pub">
-      <span class="pill p-live"><i class="fa-solid fa-circle-check"></i> Published 2025</span>
-      <p class="authors"><strong>Billah, M. M. M.</strong>, Morsad, G., Zowad, M. A.</p>
-      <h3>Investigating effects of urban form on the urban heat island in mega cities of Bangladesh: a case study of Chattogram</h3>
-      <p class="venue"><i class="fa-solid fa-landmark"></i> ICCEI-2025 · Paper ID 864</p>
-      <details class="abs"><summary>Read abstract</summary><p>This paper explores the impact of urban form on the urban heat island effect in Chittagong City Corporation, Bangladesh, studying the relationship between land surface temperature and several spatial indicators. The impact of six primary components — land use, human activity, surface indices, street and building indicators, and ecological infrastructure — on land surface temperature was estimated using Landsat 8 satellite imagery and spatial regression models. Results indicated that built-up areas including residential, commercial and industrial land contributed to increasing temperature significantly, while rural land showed no such contribution. Surface indices such as the Normalized Difference Moisture Index and the Normalized Difference Built-up Index showed the largest association with land surface temperature, pointing out the crucial role of moisture condition and built intensity. While built-form density and human activities are associated with increasing temperature, natural factors such as vegetation and water bodies have a larger effect. The study concludes that improving green infrastructure and maximising the spatial arrangement of natural features may be more effective in reducing urban heat than focusing only on the management of urban density or human activity.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Urban Heat Island</span><span class="chip">Urban Form</span><span class="chip">Chattogram</span><span class="chip">Spatial Regression</span><span class="chip">Landsat</span></div>
-      <div class="pfoot"><a class="plink" href="https://icceiruet.org/iccei-2025-2/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Conference website</a><!-- EDIT · PDF --><a class="plink" href="#"><i class="fa-solid fa-file-pdf"></i> Full paper</a></div>
-    </article>
-
-    <article class="pub" data-t="conf" data-s="pub">
-      <span class="pill p-live"><i class="fa-solid fa-circle-check"></i> Published 2025</span>
-      <p class="authors">Zowad, M. A., Morsad, G., <strong>Billah, M. M. M.</strong></p>
-      <h3>Assessment of sanitation and water service condition in urban slums of Chattogram: a case study of Moti Jharna slum</h3>
-      <p class="venue"><i class="fa-solid fa-landmark"></i> ICCEI-2025 · Paper ID 862</p>
-      <details class="abs"><summary>Read abstract</summary><p>The Moti Jharna slum in the city centre faces severe shortages of basic services: insecure housing, poor infrastructure and inadequate water and sanitation facilities. This study assesses the quality of sanitation and urban water services and measures residents' satisfaction levels through the Customer Satisfaction Index, field visits, household surveys and focus group discussions. A combined SERVQUAL and analytical hierarchy process methodology was analysed across five key dimensions: tangibility, reliability, responsiveness, assurance and empathy. The findings show that sanitation and water services meet only 22% and 18% of public expectations respectively, indicating severe dissatisfaction in the settlement. Reliability was the dimension with the highest dissatisfaction, highlighting critical gaps in fundamental service delivery. These results point to an urgent need for practical strategies to improve water and sanitation systems and to guide future urban development planning.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Slum Sanitation</span><span class="chip">Water Services</span><span class="chip">Chattogram</span><span class="chip">WASH</span><span class="chip">Urban Planning</span></div>
-      <div class="pfoot"><a class="plink" href="https://icceiruet.org/iccei-2025-2/" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Conference website</a><a class="plink" href="#"><i class="fa-solid fa-file-pdf"></i> Full paper</a></div>
-    </article>
-
-    <article class="pub" data-t="conf" data-s="rev">
-      <span class="pill p-rev"><i class="fa-solid fa-clock"></i> Under review</span>
-      <p class="authors">Zowad, M. A., <strong>Billah, M. M. M.</strong></p>
-      <h3>Assessing the impacts of sea-level rise on future land use and land cover using SLAMM and ANN: a case study of Chattogram, Bangladesh</h3>
-      <p class="venue"><i class="fa-solid fa-landmark"></i> ICWFM-2027</p>
-      <details class="abs"><summary>Read abstract</summary><p>Bangladesh, a low-lying South Asian country, is highly vulnerable to sea-level rise, a key impact of global climate change. Projections estimate that by 2100 sea-level rise in Bangladesh could reach 1.5 to 2 metres, affecting around 1.5 million people and permanently relocating 13 million. This study examines the potential impacts of sea-level rise and land use and land cover change in the Chittagong district, where rising water will reduce drainage gradients and increase flood and waterlogging risk. The SLAMM model and an artificial neural network were used to predict land cover change for 2050 and 2100. The results indicate that the Chattogram district will experience significant change, with a decrease in water bodies and vegetation, an increase in built-up areas and a decrease in barren land. The total area affected by sea-level rise increases from 24.72 km² in 2022 to 128.14 km² in 2100, with the largest impact on water bodies rising from 16.5 km² to 63.12 km², and affected built-up area rising from 0.61 km² to 10.84 km². The findings highlight the urgent need for sustainable development and effective adaptation measures in the district.</p></details>
-      <div class="chips" style="margin-top:.9rem"><span class="chip">Sea Level Rise</span><span class="chip">LULC Change</span><span class="chip">SLAMM</span><span class="chip">Artificial Neural Network</span><span class="chip">Coastal Vulnerability</span></div>
-    </article>
-  </div>
-</div></section>
-
-<!-- ══════════ PROJECTS ══════════ -->
-<section class="sec" id="projects"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">Professional experience</p><h2>Master plans and<br/><em>spatial consultancy</em></h2>
-    <p>Government-scale planning work in Bangladesh, where GIS analysis, environmental assessment and community consultation have to arrive at one buildable document.</p></div>
-
-  <div class="employer sr">
-    <span class="eico"><i class="fa-solid fa-building"></i></span>
-    <div><b>Sheltech Consultants (Pvt.) Ltd.</b><span>Urban Planner | GIS &amp; RS Specialist · Dhaka, Bangladesh</span></div>
-    <div class="ewhen"><b>2024 – Present</b>Full-time</div>
-  </div>
-
-  <!-- ADD A PROJECT: copy this whole <article class="proj"> block -->
-  <article class="proj sr">
-    <div class="ptop"><h3>50-Year Master Plan — Government Shrimp Estate, Chakaria</h3><span class="badge b-done">Jun 2024 – Mar 2026</span></div>
-    <p class="pmeta"><span><i class="fa-solid fa-landmark"></i>Department of Fisheries, Bangladesh</span><span><i class="fa-solid fa-sack-dollar"></i>World Bank / SCMFP · USD 240 million</span><span><i class="fa-solid fa-location-dot"></i>Cox's Bazar coastal zone</span></p>
-    <div class="kpis">
-      <div class="kpi"><b>8,080</b><span>Acres project area</span></div>
-      <div class="kpi"><b>37,178</b><span>Topo survey points</span></div>
-      <div class="kpi"><b>469</b><span>Structures surveyed</span></div>
-      <div class="kpi"><b>119</b><span>Shrimp ponds mapped</span></div>
-    </div>
-    <div class="split">
-      <div class="panel"><h4>Project overview</h4>
-        <p>The Chakaria Government Shrimp Estate in the Cox's Bazar coastal zone covers roughly 8,080 acres and is one of Bangladesh's strategically important aquaculture zones, under traditional extensive shrimp farming since the 1970s. Funded through the World Bank-backed Sustainable Coastal and Marine Fisheries Project, the work transforms the estate into a modern semi-intensive aquaculture hub aligned with Bangladesh's Blue Economy aspirations and 8th Five Year Plan targets.</p>
-        <p>The topographic survey recorded 37,178 data points, revealing a height range from −2.17 m to 5.41 m with a mean of 1.71 m. Land use analysis confirmed 63.39% aquaculture, 21.71% water bodies and 7.18% fallow wetlands. The hydrographic survey documented active tidal influence from the Moheshkhali Channel, peaking through the July–August monsoon.</p>
-      </div>
-      <div class="panel"><h4>My role</h4>
-        <ul class="dots">
-          <li><strong>Topographic survey processing.</strong> Turned 37,178 spot levels into high-resolution digital elevation models, mapping flood inundation zones and terrain suitability across a dynamic tidal landscape.</li>
-          <li><strong>LULC mapping.</strong> Produced the land use and land cover analysis covering aquaculture, water bodies, fallow wetland, residential land and road networks.</li>
-          <li><strong>SESIA formulation.</strong> Led the strategic environmental and social impact assessment, evaluating bio-ecological zones, soil and water quality, mangrove buffer zones and World Bank ESF compliance.</li>
-          <li><strong>Transportation analysis.</strong> Designed and administered transport surveys, then modelled multi-modal traffic flow and regional road connectivity for the Blue Economy framework.</li>
-          <li><strong>Community engagement.</strong> Ran key informant interviews, focus group discussions and participatory rural appraisal sessions with fishermen, Department of Fisheries officials and local government.</li>
-          <li><strong>Master plan delivery.</strong> Synthesised every data stream into the final technical report and 50-year strategic master plan delivered to the client.</li>
-        </ul>
-        <div class="chips"><span class="chip c-teal">ArcGIS Pro</span><span class="chip c-teal">DEM analysis</span><span class="chip c-teal">SESIA</span><span class="chip c-teal">World Bank ESF</span><span class="chip c-teal">Blue Economy</span><span class="chip c-teal">Kobo Toolbox</span></div>
-      </div>
-    </div>
-    <!-- EDIT · MAPS: replace each .fig-ph div with <img src="assets/img/projects/xxx.jpg" alt="..."/> -->
-    <div class="figs">
-      <figure class="fig"><div class="fig-ph"><i class="fa-solid fa-map"></i> Spatial development plan<small>assets/img/projects/chakaria-plan.jpg</small></div>
-        <figcaption><b>Proposed spatial development plan</b><span>Ponds, channels, internal roads and service facilities arranged for climate-resilient aquaculture.</span></figcaption></figure>
-      <figure class="fig"><div class="fig-ph"><i class="fa-solid fa-mountain"></i> Contour map and DEM<small>assets/img/projects/chakaria-dem.jpg</small></div>
-        <figcaption><b>Contour map and DEM</b><span>Elevation surface built from 37,178 spot levels, spanning −2.17 m to 5.41 m.</span></figcaption></figure>
-      <figure class="fig"><div class="fig-ph"><i class="fa-solid fa-water"></i> Flood and dyke assessment<small>assets/img/projects/chakaria-flood.jpg</small></div>
-        <figcaption><b>Flood inundation and dyke protection</b><span>Projected inundation for 5, 20, 50 and 100-year return periods.</span></figcaption></figure>
-    </div>
-  </article>
-
-  <hr class="hr"/>
-
-  <article class="proj sr">
-    <div class="ptop"><h3>Upazila Town Master Plan — UTMIDP / UMPP 2</h3><span class="badge b-live">Oct 2023 – Ongoing</span></div>
-    <p class="pmeta"><span><i class="fa-solid fa-landmark"></i>Local Government Engineering Department (LGED)</span><span><i class="fa-solid fa-sack-dollar"></i>Government of Bangladesh funded</span><span><i class="fa-solid fa-location-dot"></i>Lalmai, Monoharganj &amp; Gowainghat</span></p>
-    <div class="kpis">
-      <div class="kpi"><b>3</b><span>Upazila towns</span></div>
-      <div class="kpi"><b>10 yr</b><span>LULC time series</span></div>
-      <div class="kpi"><b>PGIS</b><span>Core methodology</span></div>
-      <div class="kpi"><b>Multi</b><span>Sector assessment</span></div>
-    </div>
-    <div class="split">
-      <div class="panel"><h4>Project overview</h4>
-        <p>UTMIDP covers three geographically and administratively distinct upazila headquarters: Lalmai and Monoharganj in Comilla Division, and Gowainghat in Sylhet Division. Each town brings its own planning problem — Sylhet's seismically active tea-garden landscape on one hand, Comilla's dense peri-urban growth corridor on the other.</p>
-        <p>The project produces long-term spatial master plans integrating GIS analysis, participatory community input, climate resilience zoning and multi-sector infrastructure assessment across engineering, socio-economic and environmental domains.</p>
-      </div>
-      <div class="panel"><h4>My role</h4>
-        <ul class="dots">
-          <li><strong>LULC classification.</strong> Processed and classified high-resolution multispectral imagery to delineate land cover change across all three towns over a decade-long temporal window in ArcGIS Pro and QGIS.</li>
-          <li><strong>Geodatabase integration.</strong> Brought geotechnical profiles, seismological vulnerability layers for the Sylhet high hazard zone, hydrographic survey results and multi-sector infrastructure data into one centralised GIS geodatabase.</li>
-          <li><strong>Large-scale field surveys.</strong> Directed engineering, socio-economic and transportation survey campaigns across three dispersed towns, designing Kobo Toolbox instruments with embedded logic checks and skip-pattern validation.</li>
-          <li><strong>Participatory GIS.</strong> Applied PGIS across key informant interviews, focus groups and open community mapping to formally integrate indigenous spatial knowledge and locally identified risk into the zoning framework.</li>
-          <li><strong>Spatial analysis and modelling.</strong> Ran road network analysis and spatial statistical modelling to assess access and service coverage equity.</li>
-        </ul>
-        <div class="chips"><span class="chip c-teal">QGIS</span><span class="chip c-teal">LULC classification</span><span class="chip c-teal">Kobo Toolbox</span><span class="chip c-teal">PGIS · KII · FGD</span><span class="chip c-teal">Network analysis</span><span class="chip c-teal">Spatial statistics</span></div>
-      </div>
-    </div>
-    <div class="figs">
-      <figure class="fig"><div class="fig-ph"><i class="fa-solid fa-layer-group"></i> Land use land cover<small>assets/img/projects/utmidp-lulc.jpg</small></div>
-        <figcaption><b>Land use and land cover</b><span>Decade-long classified imagery across the three upazila towns.</span></figcaption></figure>
-      <figure class="fig"><div class="fig-ph"><i class="fa-solid fa-house-flood-water"></i> Flood inundation<small>assets/img/projects/utmidp-flood.jpg</small></div>
-        <figcaption><b>Flood inundation, 20-year return period</b><span>The hazard surface behind the climate-resilient zoning.</span></figcaption></figure>
-      <figure class="fig"><div class="fig-ph"><i class="fa-solid fa-diagram-project"></i> Network analysis<small>assets/img/projects/utmidp-network.jpg</small></div>
-        <figcaption><b>Road network and service coverage</b><span>Accessibility and service-equity analysis across the town cores.</span></figcaption></figure>
-    </div>
-  </article>
-</div></section>
-
-<!-- ══════════ ACADEMIC RESEARCH ══════════ -->
-<section class="sec bg-bone" id="academic"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">Academic research</p><h2>Research experience and<br/><em>undergraduate thesis</em></h2></div>
-
-  <article class="role-card sr">
-    <div class="rtop">
-      <div>
-        <h3>Research Assistant — GIS Laboratory</h3>
-        <p class="rwhere">Department of Urban and Regional Planning, CUET</p>
-        <p class="rsup">Supervisor: <strong>Israt Jahan</strong>, Assistant Professor (PhD, University of Delaware)</p>
-        <p class="rtitle">Heat mapping the metropolis: exploring atmospheric and surface urban heat islands in three major cities of Bangladesh</p>
-      </div>
-      <div class="rwhen"><p>May – November 2023</p><p style="margin-top:.6rem"><span class="chip c-teal">Dhaka · Chattogram · Khulna</span></p></div>
-    </div>
-    <div class="rbody"><ul class="tri">
-      <li>Designed automated geospatial workflows in ArcGIS and QGIS for mapping atmospheric and surface heat island intensity across three cities, processing multi-temporal <strong>Landsat 8 and MODIS land surface temperature datasets</strong> with radiometric and atmospheric correction.</li>
-      <li>Built <strong>R pipelines</strong> with ggplot2, sf and tidyverse for data cleaning, statistical visualisation, hypothesis testing and predictive spatial modelling of heat island intensity against urban morphology indices including NDVI, NDBI, albedo and impervious surface fraction.</li>
-      <li>Performed comparative <strong>zonal spatial analysis</strong> across the three cities and interpreted multi-variable datasets to identify the dominant drivers of urban heat.</li>
-    </ul></div>
-  </article>
-
-  <div class="thesis sr">
-    <p class="eyebrow">Undergraduate thesis · CUET · 2023</p>
-    <h3>Investigating effects of urban form on the urban heat island effect in mega cities of the Global South</h3>
-    <p class="tsup">Advisor: <strong>Dr Mohammed Sarfaraz Gani Adnan</strong> — Leverhulme Fellow, Brunel University London; DPhil, University of Oxford</p>
-    <p class="body">Derived emissivity-corrected land surface temperature from Landsat 8 TIRS Band 10 imagery across Dhaka and Chattogram, then quantified 20 urban form metrics in six categories — land use, building envelope, street and building indicators, human activity, spectral indices and albedo — using bivariate spatial regression with spatial autocorrelation validation. Urban ecological infrastructure exerted the strongest negative influence on land surface temperature, while land use category showed significant positive associations.</p>
-    <div class="chips"><span class="chip c-dark">Landsat 8 TIRS</span><span class="chip c-dark">LST derivation</span><span class="chip c-dark">Spatial regression</span><span class="chip c-dark">NDVI · NDBI · albedo</span><span class="chip c-dark">Moran's I</span><span class="chip c-dark">Urban form metrics</span></div>
-    <!-- EDIT · thesis PDF --><a class="tlink" href="#"><i class="fa-solid fa-file-pdf"></i> Read the thesis</a>
-  </div>
-</div></section>
-
-<!-- ══════════ SKILLS ══════════ -->
-<section class="sec" id="skills"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">Technical expertise</p><h2>Tools and <em>methods</em></h2></div>
-  <div class="sgrid">
-    <div class="skill sr"><span class="sico i-teal"><i class="fa-solid fa-earth-asia"></i></span><h3>GIS &amp; remote sensing</h3>
-      <div class="chips"><span class="chip">ArcGIS Pro</span><span class="chip">QGIS</span><span class="chip">Google Earth Engine</span><span class="chip">ERDAS Imagine 2014</span><span class="chip">Landsat 8</span><span class="chip">MODIS</span><span class="chip">Sentinel-1 SAR</span><span class="chip">ENVI</span></div></div>
-    <div class="skill sr"><span class="sico i-plum"><i class="fa-solid fa-code"></i></span><h3>Programming &amp; scripting</h3>
-      <div class="chips"><span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">GeoPandas</span><span class="chip">Rasterio</span><span class="chip">Scikit-learn</span><span class="chip">Matplotlib</span><span class="chip">R / RStudio</span><span class="chip">ggplot2</span><span class="chip">tidyverse</span></div></div>
-    <div class="skill sr"><span class="sico i-amber"><i class="fa-solid fa-chart-line"></i></span><h3>Spatial &amp; statistical modelling</h3>
-      <div class="chips"><span class="chip">Bivariate spatial regression</span><span class="chip">Moran's I</span><span class="chip">DEM analysis</span><span class="chip">LULC analysis</span><span class="chip">ML classification</span><span class="chip">AHP</span><span class="chip">SPSS 23</span><span class="chip">STATA</span><span class="chip">PTV VISUM</span></div></div>
-    <div class="skill sr"><span class="sico i-gold"><i class="fa-solid fa-clipboard-list"></i></span><h3>Field data &amp; survey tools</h3>
-      <div class="chips"><span class="chip">Kobo Toolbox</span><span class="chip">Relational geodatabases</span><span class="chip">Participatory GIS</span><span class="chip">KII / FGD / PRA</span><span class="chip">Survey instrument design</span><span class="chip">RDBMS</span></div></div>
-    <div class="skill sr"><span class="sico i-rose"><i class="fa-solid fa-compass-drafting"></i></span><h3>CAD &amp; drafting</h3>
-      <div class="chips"><span class="chip">AutoCAD</span><span class="chip">Civil 3D</span><span class="chip">CorelDraw X8</span><span class="chip">Microsoft Office</span></div></div>
-    <div class="skill dark sr"><span class="sico i-gold"><i class="fa-solid fa-certificate"></i></span><h3>Certifications &amp; tests</h3>
-      <ul class="certs">
-        <li><i class="fa-solid fa-circle-check"></i> Python for Data Science &amp; ML Bootcamp</li>
-        <li><i class="fa-solid fa-circle-check"></i> Quantitative Research Methods with R</li>
-        <li><i class="fa-solid fa-circle-check"></i> Strategic Transport Model — PTV VISUM (BIP)</li>
-        <li><i class="fa-solid fa-circle-check"></i> LULC classification — ERDAS, ArcGIS, ENVI</li>
-        <li><i class="fa-solid fa-circle-check"></i> Prediction mapping with GIS and advanced ML</li>
-        <li><i class="fa-solid fa-circle-check"></i> MATLAB master class</li>
+    </td>
+    <td width="50%" valign="top">
+      <h4>💻 Data Science & Programming</h4>
+      <ul>
+        <li><b>Programming Languages:</b> Python (GeoPandas, Rasterio, Shapely, Scikit-learn), R</li>
+        <li><b>Statistical Software:</b> SPSS, STATA</li>
+        <li><b>Database Management:</b> PostGIS, Relational Geodatabases, SQL</li>
+        <li><b>Data Visualization:</b> Matplotlib, Seaborn, Tableau</li>
+        <li><b>Notebook Environments:</b> Google Colab, Jupyter Notebooks</li>
       </ul>
-      <div class="ielts"><b>7.0</b><div><span>IELTS overall band</span><small>L 7.0 · R 7.0 · S 6.5 · W 6.5</small></div></div>
-    </div>
-  </div>
-</div></section>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h4>📐 Planning, Design & CAD</h4>
+      <ul>
+        <li>AutoCAD 2D / 3D, Civil 3D</li>
+        <li>Spatial Zoning & Development Regulations</li>
+        <li>Strategic Environmental & Social Impact Assessment (SESIA)</li>
+        <li>Multi-Criteria Decision Analysis (MCDA)</li>
+        <li>Disaster Risk Reduction (DRR) & Climate Adaptation</li>
+      </ul>
+    </td>
+    <td width="50%" valign="top">
+      <h4>👥 Professional & Leadership</h4>
+      <ul>
+        <li>Cross-functional Project Management & Coordination</li>
+        <li>Large-Scale Survey Logistics & Quality Assurance</li>
+        <li>Stakeholder Engagement (FGD, KII, PRA Workshops)</li>
+        <li>Technical Report Writing & Master Plan Documentation</li>
+        <li>Member, <b>Bangladesh Institute of Planners (BIP)</b></li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
-<!-- ══════════ GALLERY ══════════
-  ADD A PHOTO: copy a <figure class="shot"> and replace .shot-ph with
-  <img src="assets/img/gallery/07.jpg" alt="Describe what is happening"/>
-═══════════════════════════════════════════════ -->
-<section class="sec bg-bone" id="gallery"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">Gallery</p><h2>Field work and<br/><em>site documentation</em></h2>
-    <p>Survey days, community sessions and drone reconnaissance from the coastal estate and the upazila town projects.</p></div>
-  <div class="gal sr">
-    <figure class="shot"><div class="shot-ph"><i class="fa-regular fa-image"></i> assets/img/gallery/01.jpg</div><figcaption>Topographic survey, Chakaria estate</figcaption></figure>
-    <figure class="shot"><div class="shot-ph"><i class="fa-regular fa-image"></i> assets/img/gallery/02.jpg</div><figcaption>Focus group discussion with pond operators</figcaption></figure>
-    <figure class="shot"><div class="shot-ph"><i class="fa-regular fa-image"></i> assets/img/gallery/03.jpg</div><figcaption>Drone reconnaissance over the estate</figcaption></figure>
-    <figure class="shot"><div class="shot-ph"><i class="fa-regular fa-image"></i> assets/img/gallery/04.jpg</div><figcaption>Household survey, Gowainghat</figcaption></figure>
-    <figure class="shot"><div class="shot-ph"><i class="fa-regular fa-image"></i> assets/img/gallery/05.jpg</div><figcaption>Community mapping session</figcaption></figure>
-    <figure class="shot"><div class="shot-ph"><i class="fa-regular fa-image"></i> assets/img/gallery/06.jpg</div><figcaption>Presenting the draft master plan</figcaption></figure>
-  </div>
-</div></section>
+<br/>
 
-<!-- ══════════ CONTACT ══════════ -->
-<section class="sec bg-ink" id="contact"><div class="wrap">
-  <div class="shead sr"><p class="eyebrow">Contact</p><h2>Let's <em>connect</em></h2>
-    <p>Open to academic collaborations, research partnerships, PhD programme discussions and consultancy enquiries. I usually reply within 48 hours.</p></div>
-  <div class="cgrid">
-    <div class="sr">
-      <div class="ccards">
-        <a class="ccard" href="mailto:mustakim.billah.m98@gmail.com"><span class="cico"><i class="fa-solid fa-envelope"></i></span><span><b>Email</b><span>mustakim.billah.m98@gmail.com</span></span></a>
-        <a class="ccard" href="https://www.linkedin.com/in/mmustakimbillah/" target="_blank" rel="noopener"><span class="cico"><i class="fa-brands fa-linkedin-in"></i></span><span><b>LinkedIn</b><span>linkedin.com/in/mmustakimbillah</span></span></a>
-        <a class="ccard" href="https://www.researchgate.net/profile/Mustakim-Billah-6" target="_blank" rel="noopener"><span class="cico"><i class="fa-brands fa-researchgate"></i></span><span><b>ResearchGate</b><span>researchgate.net/profile/Mustakim-Billah-6</span></span></a>
-        <div class="ccard" style="cursor:default"><span class="cico"><i class="fa-solid fa-location-dot"></i></span><span><b>Based in</b><span>Dhaka, Bangladesh</span></span></div>
-      </div>
-      <blockquote class="quote">I would love to connect, collaborate and contribute to impactful spatial planning and research.M. M. Mustakim Billah</blockquote>
-    </div>
+<!-- ========================================================================== -->
+<!-- SECTION 6: GALLERY & PROJECT SHOWCASE                                      -->
+<!-- ========================================================================== -->
+<div id="gallery"></div>
 
-    <!-- EDIT · FORM: create a form at formspree.io, paste the endpoint into action.
-         Until then the button opens the visitor's mail client instead. -->
-    <div class="form sr">
-      <h3>Send a message</h3>
-      <p>Tell me a little about the project or enquiry and I'll get back to you.</p>
-      <form id="cform" method="POST" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" data-mailto="mustakim.billah.m98@gmail.com">
-        <div class="frow">
-          <div class="f"><label for="n">Your name</label><input id="n" type="text" name="name" placeholder="Jane Smith" required/></div>
-          <div class="f"><label for="e">Email address</label><input id="e" type="email" name="email" placeholder="jane@university.edu" required/></div>
-        </div>
-        <div class="f"><label for="s">Subject</label><input id="s" type="text" name="subject" placeholder="Research collaboration or consultancy enquiry"/></div>
-        <div class="f"><label for="m">Message</label><textarea id="m" name="message" placeholder="A few lines about what you have in mind" required></textarea></div>
-        <button class="btn b-solid" type="submit" style="width:100%;justify-content:center"><i class="fa-solid fa-paper-plane"></i> Send message</button>
-        <p class="fnote">Connect a Formspree endpoint to receive messages by email.</p>
-      </form>
-    </div>
-  </div>
-</div></section>
+## 🖼 Gallery & Project Showcase
 
-</main>
+*Representative samples of spatial modeling, master planning layouts, and environmental cartography.*
 
-<!-- ══════════ FOOTER ══════════ -->
-<footer class="foot"><div class="foot-in">
-  <div class="ftop">
-    <div class="fbcol">
-      <p class="fbrand">M<span>.</span> Mustakim Billah</p>
-      <p class="fblurb">Urban planner and geospatial researcher working on heat, water and growth in the cities of the Global South.</p>
-    </div>
-    <div class="fcol"><h4>Sections</h4><a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#gallery">Gallery</a></div>
-    <div class="fcol"><h4>Elsewhere</h4>
-      <a href="https://www.linkedin.com/in/mmustakimbillah/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.researchgate.net/profile/Mustakim-Billah-6" target="_blank" rel="noopener">ResearchGate</a>
-      <a href="mailto:mustakim.billah.m98@gmail.com">Email</a></div>
-  </div>
-  <div class="fbot">
-    <p>&copy; <span id="yr">2026</span> M. M. Mustakim Billah. All rights reserved.</p>
-    <div class="fsoc">
-      <a href="https://www.linkedin.com/in/mmustakimbillah/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-      <a href="https://www.researchgate.net/profile/Mustakim-Billah-6" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fa-brands fa-researchgate"></i></a>
-      <a href="mailto:mustakim.billah.m98@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-    </div>
-  </div>
-</div></footer>
+<table width="100%">
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=600&q=80" alt="Master Planning Layout" width="100%"/>
+      <br/>
+      <b>Coastal Master Plan Layout (Chakaria 8,080 Acres)</b>
+      <p align="left"><i>Comprehensive spatial zoning incorporating tidal buffers, shrimp aqua-farming sectors, access corridors, and nature-based dikes.</i></p>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://images.unsplash.com/photo-1508873696983-2df57046475b?auto=format&fit=crop&w=600&q=80" alt="DEM & Hydrological Modeling" width="100%"/>
+      <br/>
+      <b>High-Resolution Digital Elevation Model (DEM)</b>
+      <p align="left"><i>Processed from 37,000+ spot elevations to identify inundation zones, flow accumulation vectors, and embankment heights.</i></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=600&q=80" alt="Urban Heat Island Analysis" width="100%"/>
+      <br/>
+      <b>Land Surface Temperature (LST) & Urban Heat Island</b>
+      <p align="left"><i>Satellite-derived thermal profiles mapped against built-up density indices across metropolitan development corridors.</i></p>
+    </td>
+    <td width="50%" align="center">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Upazila Infrastructure Suitability" width="100%"/>
+      <br/>
+      <b>UTMIDP Multi-Criteria Infrastructure Suitability</b>
+      <p align="left"><i>Overlay modeling integrating geological boring tests, flood return periods, and transit routes for Upazila growth centers.</i></p>
+    </td>
+  </tr>
+</table>
 
-<button id="top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+> *Tip: To display your actual project images, upload them to an `assets/` folder in this GitHub repository and update the `img src` links to `./assets/your-image.png`.*
 
-<script>
-(function(){'use strict';
-var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-document.getElementById('yr').textContent=new Date().getFullYear();
+<br/>
 
-/* reveal on scroll */
-var items=document.querySelectorAll('.sr');
-if(reduce||!('IntersectionObserver' in window)){items.forEach(function(e){e.classList.add('on')});}
-else{var io=new IntersectionObserver(function(en,ob){en.forEach(function(x){if(!x.isIntersecting)return;
- x.target.parentElement.querySelectorAll(':scope > .sr:not(.on)').forEach(function(el,i){setTimeout(function(){el.classList.add('on')},i*65)});
- x.target.classList.add('on');ob.unobserve(x.target)})},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
- items.forEach(function(e){io.observe(e)});}
+<!-- ========================================================================== -->
+<!-- SECTION 7: CONTACT ME                                                      -->
+<!-- ========================================================================== -->
+<div id="contact-me" align="center">
 
-/* mobile menu */
-var bg=document.querySelector('.burger'),nav=document.getElementById('nav');
-if(bg&&nav){var set=function(o){nav.classList.toggle('open',o);bg.setAttribute('aria-expanded',o?'true':'false');bg.setAttribute('aria-label',o?'Close menu':'Open menu')};
- bg.addEventListener('click',function(){set(!nav.classList.contains('open'))});
- nav.addEventListener('click',function(e){if(e.target.tagName==='A')set(false)});
- addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){set(false);bg.focus()}});}
+## 📬 Contact Me
 
-/* active link + back to top */
-var secs=[].slice.call(document.querySelectorAll('section[id]')),as=[].slice.call(document.querySelectorAll('.nav a')),top=document.getElementById('top'),tick=false;
-function scan(){var y=scrollY,cur='';secs.forEach(function(s){if(y>=s.offsetTop-90)cur=s.id});
- as.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
- top.classList.toggle('show',y>500);tick=false}
-addEventListener('scroll',function(){if(!tick){requestAnimationFrame(scan);tick=true}},{passive:true});scan();
-top.addEventListener('click',function(){scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+I am open to academic research collaborations, technical consultations, and strategic planning opportunities. Feel free to connect!
 
-/* publication filter */
-var fb=document.querySelector('.filters');
-if(fb){var pubs=[].slice.call(document.querySelectorAll('.pub')),grp=[].slice.call(document.querySelectorAll('.pgroup'));
- fb.addEventListener('click',function(e){var b=e.target.closest('.fbtn');if(!b)return;var w=b.dataset.f;
-  fb.querySelectorAll('.fbtn').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
-  pubs.forEach(function(p){p.classList.toggle('hide',w!=='all'&&p.dataset.t!==w)});
-  grp.forEach(function(g){g.style.display=g.querySelectorAll('.pub:not(.hide)').length?'':'none'})});}
+<br/>
 
-/* form falls back to mailto until a real endpoint is set */
-var f=document.getElementById('cform');
-if(f)f.addEventListener('submit',function(e){var a=f.getAttribute('action')||'';
- if(a&&a.indexOf('REPLACE_WITH')===-1&&a!=='#')return;e.preventDefault();var d=new FormData(f);
- location.href='mailto:'+f.dataset.mailto+'?subject='+encodeURIComponent(d.get('subject')||'Website enquiry')
- +'&body='+encodeURIComponent('Name: '+(d.get('name')||'')+'\nEmail: '+(d.get('email')||'')+'\n\n'+(d.get('message')||''));});
+[![Email](https://img.shields.io/badge/Email-mmmbillah1%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mmmbillah1@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
+[![ResearchGate](https://img.shields.io/badge/ResearchGate-Profile-00CCBB?style=for-the-badge&logo=researchgate&logoColor=white)](https://researchgate.net)
+[![Google Scholar](https://img.shields.io/badge/Google_Scholar-Citations-4285F4?style=for-the-badge&logo=google-scholar&logoColor=white)](https://scholar.google.com)
 
-/* decorative hero contours */
-var sv=document.getElementById('contours');
-if(sv){var ring=function(cx,cy,r0,k1,p1,k2,p2,q){var d='',n=56,i,t,r;
- for(i=0;i<=n;i++){t=2*Math.PI*i/n;r=r0*(1+k1*Math.sin(3*t+p1)+k2*Math.sin(5*t+p2)+.05*Math.sin(7*t));
-  d+=(i?'L':'M')+Math.round(cx+r*Math.cos(t))+' '+Math.round(cy+r*Math.sin(t)*q)}return d+'Z'};
- var o='',k;
- for(k=0;k<10;k++)o+='<path d="'+ring(880,250,72+k*40,.16,.7,.09,2.1,.86)+'" opacity="'+(.55-k*.04).toFixed(2)+'" stroke-width="'+(k%4?.8:1.4)+'"/>';
- for(k=0;k<7;k++)o+='<path d="'+ring(180,560,58+k*46,.2,3.4,.11,.5,.9)+'" opacity="'+(.34-k*.035).toFixed(2)+'" stroke-width="'+(k%3?.7:1.3)+'"/>';
- sv.innerHTML=o;}
-})();
-</script>
-</body>
-</html>
+<br/>
+
+📍 **Current Location:** Dhaka, Bangladesh  
+🏛️ **Professional Affiliation:** Sheltech Consultants (Pvt.) Ltd.  
+✉️ **Direct Email:** [mmmbillah1@gmail.com](mailto:mmmbillah1@gmail.com)
+
+<br/>
+
+---
+<sub>Designed & Maintained by M M Mustakim Billah • Hosted on GitHub</sub>
+</div>
