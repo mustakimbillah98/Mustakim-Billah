@@ -482,19 +482,141 @@
   </header>
 
   <main class="container">
-    <!-- HOME SECTION -->
-    <section id="home">
-      <div class="badge">Urban Planning & Geospatial Data Science</div>
-      <h1>Spatial Analysis for Climate-Resilient Urban Infrastructure</h1>
-      <p class="hero-desc">
-        Specializing in land surface temperature dynamics, satellite remote sensing, coastal elevation modeling, and multi-criteria regional master planning.
-      </p>
-      <div class="cta-group">
-        <a href="#experience" class="btn btn-primary">Professional Experience</a>
-        <a href="#gallery" class="btn btn-outline">View Gallery</a>
-      </div>
-    </section>
+  
+    
+    
+    
+    
+    
+    /* HOME SECTION GRID & STYLING */
+    #home {
+      border-top: none;
+      padding: 60px 0;
+    }
 
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .hero-meta-badge {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 12px;
+      font-family: var(--font-code);
+    }
+
+    .hero-name {
+      font-size: 2.6rem;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .hero-bio p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .hero-bio p strong {
+      color: var(--text);
+    }
+
+    .highlight-callout {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      color: #cbd5e1 !important;
+      font-size: 0.94rem !important;
+      margin-top: 20px;
+    }
+
+    /* PROFILE PHOTO STYLING */
+    .hero-image-col {
+      position: sticky;
+      top: 90px;
+    }
+
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      transition: var(--transition);
+    }
+
+    .profile-card:hover {
+      border-color: #334155;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-card-caption {
+      padding: 16px 20px;
+      border-top: 1px solid var(--surface-border);
+      background: rgba(17, 26, 46, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .profile-card-caption strong {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .profile-card-caption span {
+      font-size: 0.8rem;
+      color: var(--accent-light);
+      font-family: var(--font-code);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-image-col {
+        position: static;
+        max-width: 360px;
+        margin: 0 auto;
+        order: -1;
+      }
+      .hero-bio p {
+        text-align: left;
+      }
+      .hero-name {
+        font-size: 2.1rem;
+      }
+    }
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- ABOUT ME SECTION -->
     <section id="about">
       <h2 class="section-title">About Me</h2>
